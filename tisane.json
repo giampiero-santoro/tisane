@@ -1,0 +1,7 @@
+[
+  {"id": 1, "nome": "Valeriana", "tipo": "Decotto", "effetto": "Rilassante", "proprieta": "Concilia il sonno", "temperatura": "100°C"},
+  {"id": 2, "nome": "Zenzero", "tipo": "Infuso", "effetto": "Digestivo", "proprieta": "Anti-nausea", "temperatura": "95°C"},
+  {"id": 3, "nome": "Betulla", "tipo": "Infuso", "effetto": "Drenante", "proprieta": "Riduce i liquidi", "temperatura": "90°C"},
+  {"id": 4, "nome": "Menta", "tipo": "Infuso", "effetto": "Energizzante", "proprieta": "Rinfrescante e stimolante", "temperatura": "90°C"},
+  {"id": 5, "nome": "Malva", "tipo": "Infuso", "effetto": "Lenitivo", "proprieta": "Sfiamma le mucose", "temperatura": "95°C"}
+]
