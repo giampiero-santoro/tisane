@@ -1,6 +1,25 @@
 :root { --primary: #2d5a27; --accent: #8fb339; --bg: #f9fbf7; --text: #333; }
 body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
-header { background: var(--primary); color: white; text-align: center; padding: 3rem 1rem; }
+
+header { 
+    background: var(--primary); 
+    color: white; 
+    text-align: center; 
+    /* Riduciamo il padding: 1rem sopra/sotto, 0 ai lati */
+    padding: 1rem 0; 
+}
+
+header h1 {
+    margin: 0;           /* Rimuove lo spazio extra attorno al titolo */
+    font-size: 1.5rem;   /* Rende il titolo un po' più piccolo se necessario */
+}
+
+header p {
+    margin: 5px 0 0 0;   /* Riduce lo spazio tra il titolo e il sottotitolo */
+    font-size: 0.9rem;   /* Sottotitolo più discreto */
+    opacity: 0.9;
+}
+
 .search-container { display: flex; justify-content: center; gap: 1rem; padding: 2rem; flex-wrap: wrap; position: sticky; top: 0; background: var(--bg); z-index: 10; border-bottom: 1px solid #eee; }
 input, select { padding: 12px 20px; border-radius: 25px; border: 2px solid #ddd; font-size: 1rem; outline: none; transition: 0.3s; }
 input:focus { border-color: var(--accent); }
