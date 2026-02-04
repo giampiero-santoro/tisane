@@ -16,3 +16,33 @@ input:focus { border-color: var(--accent); }
 .footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee; }
 .wiki-btn { color: #0645ad; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
 .wiki-btn:hover { text-decoration: underline; }
+.info-box {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    border: 1px dashed var(--accent);
+    color: #444;
+}
+
+.info-box h3 {
+    margin-top: 0;
+    color: var(--primary);
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.info-item strong {
+    color: var(--primary);
+    display: block;
+    margin-bottom: 3px;
+}
