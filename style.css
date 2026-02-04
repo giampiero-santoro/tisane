@@ -72,3 +72,22 @@ input:focus { border-color: var(--accent); }
     transform: scale(1.05);
     display: inline-block;
 }
+.top-disclaimer {
+    max-width: 900px;
+    margin: 10px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.top-disclaimer p {
+    font-size: 0.75rem; /* Scritta molto piccola */
+    color: #888;       /* Colore grigio leggero */
+    line-height: 1.4;
+    margin: 0;
+    font-style: italic;
+}
+
+.top-disclaimer strong {
+    font-weight: 600;
+    color: #666;
+}
