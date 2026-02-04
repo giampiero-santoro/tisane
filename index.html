@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioTisane - Motore di Ricerca</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🌿 BioTisane Search</h1>
+        <p>Trova la miscela perfetta per il tuo benessere</p>
+    </header>
+
+    <main>
+        <div class="filters">
+            <input type="text" id="searchBar" placeholder="Cerca ingrediente...">
+            <select id="effettoFilter">
+                <option value="">Tutti gli effetti</option>
+                <option value="Rilassante">Rilassante</option>
+                <option value="Digestivo">Digestivo</option>
+                <option value="Drenante">Drenante</option>
+                <option value="Energizzante">Energizzante</option>
+            </select>
+        </div>
+
+        <div id="results" class="results-grid">
+            </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
