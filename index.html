@@ -3,34 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BioTisane - Motore di Ricerca</title>
+    <title>🌿 Erbolario Digitale</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>🌿 BioTisane Search</h1>
-        <p>Trova la miscela perfetta per il tuo benessere</p>
+        <h1>🌿 Erbolario Digitale</h1>
+        <p>Cerca tra 100 tisane per nome o effetto</p>
     </header>
 
-    <main>
-        <div class="filters">
-            <input type="text" id="searchBar" placeholder="Cerca ingrediente...">
-            <select id="effettoFilter">
-                <option value="">Tutti gli effetti</option>
-                <option value="Rilassante">Rilassante</option>
-                <option value="Digestivo">Digestivo</option>
-                <option value="Drenante">Drenante</option>
-                <option value="Energizzante">Energizzante</option>
-                <option value="Depurativo">Depurativo</option>
-                <option value="Balsamico">Balsamico</option>
-                <option value="Antinfiammatorio">Antinfiammatorio</option>
-                <option value="Lenitivo">Lenitivo</option>
-            </select>
-        </div>
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="🔍 Cerca pianta (es. Malva)...">
+        <select id="effettoFilter">
+            <option value="">✨ Tutti gli effetti</option>
+            <option value="Rilassante">Rilassante</option>
+            <option value="Digestivo">Digestivo</option>
+            <option value="Drenante">Drenante</option>
+            <option value="Energizzante">Energizzante</option>
+            <option value="Depurativo">Depurativo</option>
+            <option value="Balsamico">Balsamico</option>
+            <option value="Antinfiammatorio">Antinfiammatorio</option>
+            <option value="Lenitivo">Lenitivo</option>
+        </select>
+    </div>
 
-        <div id="results" class="results-grid">
-            </div>
-    </main>
+    <div id="results" class="grid"></div>
 
     <script src="script.js"></script>
 </body>
