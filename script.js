@@ -25,7 +25,8 @@ function render(data) {
             consiglio = "Metti la pianta in acqua fredda, porta a bollore e cuoci per 5-10 min.";
         }
 
-        const wikiUrl = `https://it.wikipedia.org/wiki/${item.nome.replace(/ /g, "_")}`;
+// Questo link forza Wikipedia a fare una ricerca interna invece di cercare la pagina esatta
+const wikiUrl = `https://it.wikipedia.org/w/index.php?search=${encodeURIComponent(item.nome)}`;
 
         container.innerHTML += `
             <div class="card">
