@@ -65,19 +65,33 @@ function render(data) {
     });
 }
 
-// Logica Filtri
+// --- NUOVA LOGICA FILTRI AGGIORNATA ---
 const search = document.getElementById('searchBar');
 const filter = document.getElementById('effettoFilter');
+const container = document.getElementById('results'); // Assicuriamoci che esista il riferimento
 
 [search, filter].forEach(el => {
     el.addEventListener('input', () => {
         const sVal = search.value.toLowerCase();
         const fVal = filter.value;
 
+        // Filtriamo i dati
         const filtered = tisaneData.filter(t => {
             return t.nome.toLowerCase().includes(sVal) && 
                    (fVal === "" || t.effetto === fVal);
         });
-        render(filtered);
+
+        // Se non ci sono risultati, mostriamo il messaggio d'errore
+        if (filtered.length === 0) {
+            container.innerHTML = `
+                <div class="no-results">
+                    <p>🌿 Nessuna tisana trovata con questi criteri.</p>
+                    <small>Prova a cambiare parola chiave o seleziona un altro effetto.</small>
+                </div>
+            `;
+        } else {
+            // Se ci sono risultati, chiamiamo la funzione render come al solito
+            render(filtered);
+        }
     });
 });
