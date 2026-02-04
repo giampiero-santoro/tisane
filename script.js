@@ -12,6 +12,19 @@ function render(data) {
     const container = document.getElementById('results');
     container.innerHTML = '';
 
+    // Mappa degli effetti -> Icone
+    const iconeEffetti = {
+        "Rilassante": "🌙",
+        "Digestivo": "🍃",
+        "Drenante": "💧",
+        "Energizzante": "⚡",
+        "Depurativo": "🧼",
+        "Balsamico": "🌬️",
+        "Antinfiammatorio": "🛡️",
+        "Lenitivo": "🌸",
+        "Dolcificante": "🍯"
+    };
+
     data.forEach(item => {
         const temp = parseInt(item.temperatura);
         let prep = "Infuso";
@@ -25,12 +38,18 @@ function render(data) {
             consiglio = "Metti la pianta in acqua fredda, porta a bollore e cuoci per 5-10 min.";
         }
 
-// Questo link forza Wikipedia a fare una ricerca interna invece di cercare la pagina esatta
-const wikiUrl = `https://it.wikipedia.org/w/index.php?search=${encodeURIComponent(item.nome)}`;
+        // ICONA: Prende l'icona dal dizionario, se non esiste mette una foglia generica 🌿
+        const icona = iconeEffetti[item.effetto] || "🌿";
+
+        // WIKIPEDIA: Link di ricerca sicura
+        const wikiUrl = `https://it.wikipedia.org/w/index.php?search=${encodeURIComponent(item.nome)}`;
 
         container.innerHTML += `
             <div class="card">
-                <h3>${item.nome}</h3>
+                <div class="card-header">
+                    <h3>${item.nome}</h3>
+                    <span class="effect-icon" title="${item.effetto}">${icona}</span>
+                </div>
                 <div class="tags">
                     <span class="tag tag-tipo">${prep}</span>
                     <span class="tag tag-effetto">${item.effetto}</span>
