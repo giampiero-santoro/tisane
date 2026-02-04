@@ -1,65 +1,63 @@
-let database = [];
+let tisaneData = [];
 
-// Carica i dati dal file JSON
+// Caricamento Dati
 fetch('tisane.json')
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
-        database = data;
-        mostraTisane(database);
+        tisaneData = data;
+        render(tisaneData);
     });
 
-const container = document.getElementById('results');
-const searchBar = document.getElementById('searchBar');
-const effettoFilter = document.getElementById('effettoFilter');
-
-function mostraTisane(items) {
+function render(data) {
+    const container = document.getElementById('results');
     container.innerHTML = '';
-    items.forEach(item => {
-        // Logica per determinare il metodo di preparazione
-        const temperaturaNum = parseInt(item.temperatura);
-        let metodoPrep = "";
-        let consiglio = "";
+
+    data.forEach(item => {
+        const temp = parseInt(item.temperatura);
+        let prep = "Infuso";
+        let consiglio = "Versa acqua calda sulla pianta e lascia in infusione 5-8 min.";
 
         if (item.temperatura === "Ambiente") {
-            metodoPrep = "Macerato a freddo";
-            consiglio = "Lascia in acqua a temperatura ambiente per 4-6 ore.";
-        } else if (temperaturaNum >= 100) {
-            metodoPrep = "Decotto";
-            consiglio = "Metti in acqua fredda e fai bollire insieme alla pianta.";
-        } else {
-            metodoPrep = "Infuso";
-            consiglio = "Versa l'acqua calda sulla pianta (non bollente).";
+            prep = "Macerato";
+            consiglio = "Lascia la pianta in acqua fredda per 6 ore.";
+        } else if (temp >= 100) {
+            prep = "Decotto";
+            consiglio = "Metti la pianta in acqua fredda, porta a bollore e cuoci per 5-10 min.";
         }
 
-        // Link dinamico a Wikipedia Italia
-        const wikiLink = `https://it.wikipedia.org/wiki/${item.nome.replace(/ /g, "_")}`;
+        const wikiUrl = `https://it.wikipedia.org/wiki/${item.nome.replace(/ /g, "_")}`;
 
         container.innerHTML += `
             <div class="card">
                 <h3>${item.nome}</h3>
                 <div class="tags">
-                    <span class="tag type">${metodoPrep}</span>
-                    <span class="tag effect">${item.effetto}</span>
+                    <span class="tag tag-tipo">${prep}</span>
+                    <span class="tag tag-effetto">${item.effetto}</span>
                 </div>
                 <p><strong>Proprietà:</strong> ${item.proprieta}</p>
-                <p class="advice">💡 <em>${consiglio}</em></p>
-                <div class="footer-card">
-                    <span>Temp: ${item.temperatura}</span>
-                    <a href="${wikiLink}" target="_blank" class="wiki-btn">📖 Wikipedia</a>
+                <div class="advice">💡 ${consiglio}</div>
+                <div class="footer">
+                    <span>🔥 ${item.temperatura}</span>
+                    <a href="${wikiUrl}" target="_blank" class="wiki-btn">📖 Wikipedia</a>
                 </div>
             </div>
         `;
     });
 }
 
-// Filtri
-[searchBar, effettoFilter].forEach(el => {
+// Logica Filtri
+const search = document.getElementById('searchBar');
+const filter = document.getElementById('effettoFilter');
+
+[search, filter].forEach(el => {
     el.addEventListener('input', () => {
-        const query = searchBar.value.toLowerCase();
-        const effetto = effettoFilter.value;
-        const filtrati = database.filter(t => 
-            t.nome.toLowerCase().includes(query) && (effetto === "" || t.effetto === effetto)
-        );
-        mostraTisane(filtrati);
+        const sVal = search.value.toLowerCase();
+        const fVal = filter.value;
+
+        const filtered = tisaneData.filter(t => {
+            return t.nome.toLowerCase().includes(sVal) && 
+                   (fVal === "" || t.effetto === fVal);
+        });
+        render(filtered);
     });
 });
